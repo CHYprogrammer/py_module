@@ -18,7 +18,6 @@ class Plant():
         self.age += days
 
 
-
 def observation_growth(plant: Plant, days: int) -> None:
     print("=== Day 1 ===")
     plant.get_info()
