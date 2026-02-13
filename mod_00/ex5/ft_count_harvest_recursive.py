@@ -1,6 +1,5 @@
 def ft_count_harvest_recursive():
-    days = input("Days until harvest: ")
-    days = int(days)
+    days = int(input("Days until harvest: "))
 
     def count_down(day):
         if (day > days):
@@ -8,4 +7,5 @@ def ft_count_harvest_recursive():
             return
         print(f"Day {day}")
         count_down(day + 1)
+
     count_down(1)
