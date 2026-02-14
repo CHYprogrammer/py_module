@@ -15,7 +15,8 @@ class Flower(Plant):
         self.flag = True
 
     def get_info(self):
-        print(f"{self.name} (Flower): {self.height}cm, {self.age} days, {self.color} color")
+        print(f"{self.name} (Flower): {self.height}cm, {self.age} days, "
+              f"{self.color} color")
         if not self.flag:
             print(f"{self.name} have not bloomed yet")
         else:
@@ -32,7 +33,8 @@ class Tree(Plant):
         self.shade = shade
 
     def get_info(self):
-        print(f"{self.name} (Tree): {self.height}cm, {self.age} days, {self.diameter}cm diameter")
+        print(f"{self.name} (Tree): {self.height}cm, {self.age} days, "
+              f"{self.diameter}cm diameter")
         if not self.shade:
             print(f"{self.name} provides no shade")
         else:
@@ -40,7 +42,14 @@ class Tree(Plant):
 
 
 class Vegetable(Plant):
-    def __init__(self, name: str, height: int, age: int, harvest_season: str, nutrition: str = ""):
+    def __init__(
+            self,
+            name: str,
+            height: int,
+            age: int,
+            harvest_season: str,
+            nutrition: str = ""
+          ) -> None:
         super().__init__(name, height, age)
         self.harvest_season = harvest_season
         self.nutrition = nutrition

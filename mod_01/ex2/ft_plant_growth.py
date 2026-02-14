@@ -1,35 +1,34 @@
+#!/usr/bin/env python3
+
 class Plant():
-    def __init__(self, name: str, height: int, age: int):
+    def __init__(self, name: str, height: int, old: int) -> None:
         self.name = name
         self.height = height
-        self.age = age
+        self.old = old
+
+    def __str__(self) -> str:
+        return f"{self.name}: {self.height}cm, {self.old} days old"
 
     def get_info(self) -> None:
-        print(f"{self.name}: {self.height}cm, {self.age} days old")
+        print(self)
 
-    def grow(self, days: int = 1) -> None:
-        self.height += days
+    def grow(self) -> None:
+        self.height += 1
 
-    def age(self, days: int = 1) -> None:
-        self.age += days
-
-    def update(self, days: int = 1) -> None:
-        self.height += days
-        self.age += days
+    def age(self) -> None:
+        self.old += 1
 
 
-def observation_growth(plant: Plant, days: int) -> None:
+def simulate_a_week(plant: Plant) -> None:
     print("=== Day 1 ===")
     plant.get_info()
-    initial_height = plant.height
-    for _ in range(days - 1):
-        plant.update()
-    print(f"=== Day {days} ===")
+    for _ in range(6):
+        plant.grow()
+        plant.age()
+    print("=== Day 7 ===")
     plant.get_info()
-    growth = plant.height - initial_height
-    print(f"Growth this week: +{growth}cm")
 
 
 if __name__ == "__main__":
-    rose = Plant("rose", 25, 30)
-    observation_growth(rose, 7)
+    rose = Plant("Rose", 25, 30)
+    simulate_a_week(rose)

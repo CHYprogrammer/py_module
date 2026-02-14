@@ -26,16 +26,16 @@ class SecurePlant():
             self.age = age
             print(f"Age updated: {self.age} days [OK]")
 
-    def get_height(self):
+    def get_height(self) -> int:
         return self.height
 
-    def get_age(self):
+    def get_age(self) -> int:
         return self.age
 
-    def get_name(self):
+    def get_name(self) -> str:
         return self.name
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.name} ({self.height} cm, {self.age} days)"
 
 
