@@ -4,17 +4,23 @@ class Plant():
     def __init__(self, name: str, height: int, age: int) -> None:
         self.name = name
         self.height = height
-        self.age = age
+        self.old = age
 
-    def get_info(self) -> None:
-        print(f"{self.name}: {self.height}cm, {self.age} days old")
+    def grow(self, count: int = 1) -> None:
+        self.height += count
+
+    def age(self, count: int = 1) -> None:
+        self.old += count
+
+    def get_info(self) -> str:
+        return f"{self.name} ({self.height}cm, {self.old} days)"
 
 
 def ft_plant_factory(*plants: Plant) -> None:
     count = 0
     print("=== Plant Factory Output ===")
     for plant in plants:
-        print(f"Created: {plant.name} ({plant.height}cm, {plant.age} days)")
+        print(f"Created: {plant.get_info()}")
         count += 1
     print()
     print(f"Total plants created: {count}")

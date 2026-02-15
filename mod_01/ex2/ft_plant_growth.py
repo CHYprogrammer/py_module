@@ -6,29 +6,27 @@ class Plant():
         self.height = height
         self.old = old
 
-    def __str__(self) -> str:
+    def grow(self, count: int = 1) -> None:
+        self.height += count
+
+    def age(self, count: int = 1) -> None:
+        self.old += count
+
+    def get_info(self) -> str:
         return f"{self.name}: {self.height}cm, {self.old} days old"
 
-    def get_info(self) -> None:
-        print(self)
 
-    def grow(self) -> None:
-        self.height += 1
-
-    def age(self) -> None:
-        self.old += 1
-
-
-def simulate_a_week(plant: Plant) -> None:
+def simulate_a_week(plant: Plant, days: int) -> None:
     print("=== Day 1 ===")
-    plant.get_info()
-    for _ in range(6):
+    print(plant.get_info())
+    for _ in range(days - 1):
         plant.grow()
         plant.age()
-    print("=== Day 7 ===")
-    plant.get_info()
+    print(f"=== Day {days} ===")
+    print(plant.get_info())
+    print(f"Growth this week: {days - 1}")
 
 
 if __name__ == "__main__":
     rose = Plant("Rose", 25, 30)
-    simulate_a_week(rose)
+    simulate_a_week(rose, 7)
