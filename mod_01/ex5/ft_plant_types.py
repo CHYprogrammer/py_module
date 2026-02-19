@@ -81,20 +81,16 @@ class Vegetable(Plant):
             height: int,
             age: int,
             harvest_season: str,
-            nutrition: str = ""
+            nutrition: str = "nothing"
             ) -> None:
         super().__init__(name, height, age)
         self.__harvest_season = harvest_season
         self.__nutrition = nutrition
 
     def get_info(self) -> str:
-        if not self.__nutrition:
-            nutr_status = f"{self.get_name()} has no nutritional value"
-        else:
-            nutr_status = f"{self.get_name()} is rich in {self.__nutrition}"
         return (f"{self.get_name()} (Vegetable): {self.get_height()}cm, "
                 + f"{self.get_age()} days, {self.__harvest_season} harvest\n"
-                + nutr_status)
+                + f"{self.get_name()} is rich in {self.__nutrition}")
 
 
 if __name__ == "__main__":
