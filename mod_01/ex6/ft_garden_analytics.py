@@ -144,7 +144,7 @@ if __name__ == "__main__":
 
     print(
         f"\nHeight validation test: "
-        f"{GardenManager.GardenStats.validate_height(10)}"
+        f"{GardenManager.GardenStats.validate_height(alice.plants)}"
     )
     bob = GardenManager("Bob")
     bob.add_plant(Plant("Cacutus", 50, 90))
