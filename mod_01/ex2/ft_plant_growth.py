@@ -24,7 +24,7 @@ def simulate_a_week(plant: Plant, days: int) -> None:
         plant.age()
     print(f"=== Day {days} ===")
     print(plant.get_info())
-    print(f"Growth this week: {days - 1}")
+    print(f"Growth this week: +{days - 1}cm")
 
 
 if __name__ == "__main__":

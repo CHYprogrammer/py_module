@@ -28,9 +28,6 @@ class SecurePlant():
             print("Security: Negatvie age rejected")
             return
 
-    def get_name(self) -> str:
-        return self.__name
-
     def get_height(self) -> int:
         return self.__height
 
