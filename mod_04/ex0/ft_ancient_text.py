@@ -1,18 +1,20 @@
-def recover_ancient_text(filename: str) -> None:
+#!usr/bin/env python3
+
+def data_recovery_system(filename: str) -> None:
     print("=== CYBER ARCHIVES - DATA RECOVERY SYSTEM ===\n")
     print(f"Accessing Storage Vault: {filename}")
 
     try:
-        vault = open(filename, 'r')
+        f = open(filename)
         print("Connection established...\n")
+        data = f.read()
         print("RECOVERED DATA:")
-        content = vault.read()
-        print(content)
-        vault.close()
-        print("Data recovery complete. Storage unit disconnected.")
+        print(data)
+        f.close()
+        print("\nData recovery complete. Storage unit disconnected.")
     except FileNotFoundError:
-        print("ERROR: Storage vault not found. Run data generator first.")
+        print("ERROR:Storage vault not found")
 
 
 if __name__ == "__main__":
-    recover_ancient_text("ancient_fragment.txt")
+    data_recovery_system("ancient_fragment.txt")
