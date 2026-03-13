@@ -31,12 +31,7 @@ class Garden:
 
 
 class GardenError(Exception):
-    def __init__(self, message: str = "") -> None:
-        super().__init__(self)
-        self.message = message
-
-    def __str__(self) -> str:
-        return str(self.message)
+    pass
 
 
 class PlantError(GardenError):
@@ -72,15 +67,18 @@ def test_water_error(water_tank: int):
 
 def test_garden_error(garden: Garden):
     errors = []
+
     for plant in garden.plants:
         try:
             test_plant_error(plant)
         except GardenError as e:
             errors += [e]
+
     try:
         test_water_error(garden.water_tank)
     except GardenError as e:
         errors += [e]
+
     if errors:
         for error in errors:
             print(f"Caught a garden error: {error}")
@@ -96,8 +94,6 @@ def test_errors() -> None:
         test_plant_error(tomato)
     except PlantError as e:
         print(f"Caught PlantError: {e}")
-    except Exception as e:
-        print(f"Unexpected error occured: {e}")
 
     print("\nTesting WaterError...")
     try:
@@ -105,15 +101,10 @@ def test_errors() -> None:
         test_water_error(water_tank)
     except WaterError as e:
         print(f"Caught WaterError: {e}")
-    except Exception as e:
-        print(f"Unexpected error occured: {e}")
 
     print("\nTesting catching all garden errors...")
     garden = Garden(water_tank, tomato)
-    try:
-        test_garden_error(garden)
-    except Exception as e:
-        print(f"Unexpected error occured: {e}")
+    test_garden_error(garden)
 
     print("\nAll custom error types work correctly!")
 
