@@ -5,15 +5,17 @@ def data_recovery_system(filename: str) -> None:
     print(f"Accessing Storage Vault: {filename}")
 
     try:
-        f = open(filename)
+        vault = open(filename)
         print("Connection established...\n")
-        data = f.read()
+        data = vault.read()
         print("RECOVERED DATA:")
         print(data)
-        f.close()
+        vault.close()
         print("\nData recovery complete. Storage unit disconnected.")
     except FileNotFoundError:
         print("ERROR:Storage vault not found")
+    except PermissionError as e:
+        print(f"Error: {e}")
 
 
 if __name__ == "__main__":

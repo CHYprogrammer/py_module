@@ -24,7 +24,8 @@ def check_plant_health(
     elif sunlight_hours > 12:
         raise ValueError(
             f"Sunlight hours {sunlight_hours} is too high (max 12)")
-    return f"Plant '{plant_name}' is healthy!"
+    else:
+        return f"Plant '{plant_name}' is healthy!"
 
 
 def execute_plant_check(name: str, water: int, sunlight: int) -> None:
@@ -32,8 +33,6 @@ def execute_plant_check(name: str, water: int, sunlight: int) -> None:
         print(check_plant_health(name, water, sunlight))
     except ValueError as e:
         print(f"Error: {e}")
-    except Exception as e:
-        print(f"Unexpected error occured: {e}")
 
 
 def test_plant_checks() -> None:

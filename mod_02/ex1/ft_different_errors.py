@@ -12,21 +12,22 @@ class Plant:
 def garden_operations(type: str) -> None:
     violet = Plant("Violet", 15)
     garden = {"existing_plant": violet.name}
-    if not type == "multiple":
-        print(f"Testing {type}Error...")
-    if type == "Value":
-        int(violet.name)
-    elif type == "ZeroDivision":
-        violet.height / 0
-    elif type == "FileNotFound":
-        f = open("missingt.txt")
-        f.close()
-    elif type == "Key":
-        print(f"{garden['missing_plant']}")
-    elif type == "multiple":
+
+    if type == "multiple":
         print("Testing multiple errors together...")
         int(violet.name)
         violet.height / 0
+    else:
+        print(f"Testing {type}Error...")
+        if type == "Value":
+            int(violet.name)
+        elif type == "ZeroDivision":
+            violet.height / 0
+        elif type == "FileNotFound":
+            f = open("missingt.txt")
+            f.close()
+        elif type == "Key":
+            print(f"{garden['missing_plant']}")
 
 
 def test_error_types() -> None:
@@ -45,16 +46,12 @@ def test_error_types() -> None:
             print(f"Caught FileNotFoundError: {e}\n")
         except KeyError as e:
             print(f"Caught KeyError: {e}\n")
-        except Exception as e:
-            print(f"\n\n*** Unexpected Error Occured: {e} ***\n\n")
 
     # raise multiple errors
     try:
         garden_operations("multiple")
     except (ValueError, ZeroDivisionError):
         print("Caught an error, but program continues!\n")
-    except Exception as e:
-        print(f"\n\n*** Unexpected Error Occured: {e} ***\n\n")
 
     print("All error types tested successfully!")
 
