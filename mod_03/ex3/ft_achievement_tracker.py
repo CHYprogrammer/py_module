@@ -1,19 +1,7 @@
 #!/usr/bin/env python3
 
-def player_unique(target: set, *others: set) -> set | None:
-    try:
-        if target and others:
-            return target.difference(set.union(*others))
-        elif target:
-            return target
-        else:
-            raise Exception
-    except Exception:
-        print("******")
-        print("Error: Invalid input: Usage: "
-              + "player_unique(target, anothoer1, another2, ... : set)")
-        print("******")
-        return None
+def unique_achievements(target: set, *others: set) -> set:
+    return target.difference(set.union(*others))
 
 
 def ahievement_analytics(*players: set) -> None:
@@ -26,16 +14,15 @@ def ahievement_analytics(*players: set) -> None:
         rare = set()
         for target in players:
             others = [player for player in players if player is not target]
-            unique = player_unique(target, *others)
-            rare |= unique
+            rare |= unique_achievements(target, *others)
         print(f"Rare achievements (1 player): {rare}\n")
     except Exception as e:
         print(f"\n*******\nError: {e}\n******\n")
 
-        alice_unique = player_unique(alice, bob, charlie)
-        bob_unique = player_unique(bob, alice, charlie)
-        charlie_unique = player_unique(charlie, alice, bob)
-        rare = alice_unique | bob_unique | charlie_unique
+        alice_unique = unique_achievements(alice, bob, charlie)
+        bob_unique = unique_achievements(bob, alice, charlie)
+        charlie_unique = unique_achievements(charlie, alice, bob)
+        rare = set.union(alice_unique, bob_unique, charlie_unique)
         print(f"Rare achievements (1 player): {rare}\n")
 
 

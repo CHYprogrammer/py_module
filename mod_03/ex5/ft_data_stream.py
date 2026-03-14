@@ -109,8 +109,9 @@ class GameMaster:
 
 
 def first_item(d: dict) -> tuple:
-    for key in d:
-        return key, d[key]
+    key = next(iter(d))
+    value = d[key]
+    return key, value
 
 
 def sequential_play(
@@ -141,7 +142,7 @@ def ft_prime() -> Generator[int, None, None]:
         n += 2
 
 
-def print_generates(target: Generator[any, None, None], length: int) -> None:
+def print_generates(target: Generator[int, None, None], length: int) -> None:
     for i in range(length):
         if i + 1 < length:
             suffix = ", "

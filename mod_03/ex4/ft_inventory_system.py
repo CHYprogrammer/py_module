@@ -22,6 +22,7 @@ def parse_args(argv: list[str]) -> dict | None:
         return inventory
     except Exception as e:
         print(f"Error while parsing arguments vectors: {e}")
+        return None
 
 
 def current_inventory(inventory: dict) -> None:
@@ -44,7 +45,7 @@ def current_inventory(inventory: dict) -> None:
         print(f"{max_key}: {quantity} {unit} ({occupancy_rate:.1f}%)")
 
 
-def inventory_stastics(inventory: dict) -> None:
+def inventory_statistics(inventory: dict) -> None:
     if not inventory:
         return None
 
@@ -87,7 +88,7 @@ def item_categories(inventory: dict) -> None:
         print(f"Scarce: {scarce}")
 
 
-def management_suggestion(inventory: dict) -> None:
+def management_suggestions(inventory: dict) -> None:
     restock_needed = []
     for item in inventory:
         if inventory[item] <= 1:
@@ -138,18 +139,20 @@ if __name__ == "__main__":
     try:
         print("=== Inventory System Analysis ===")
         inventory = parse_args(sys.argv[1:])
+        if not inventory:
+            raise Exception("No inventory")
 
         print("\n=== Current Inventory ===")
         current_inventory(inventory)
 
         print("\n=== Inventory Statistics ===")
-        inventory_stastics(inventory)
+        inventory_statistics(inventory)
 
         print("\n=== Item Categories ===")
         item_categories(inventory)
 
         print("\n=== Management Suggestion ===")
-        management_suggestion(inventory)
+        management_suggestions(inventory)
 
         print("\n=== Dictionary Properties Demo ===")
         check_keys_and_values(inventory)

@@ -5,10 +5,11 @@ import sys
 
 
 def create_position(x: int, y: int, z: int) -> tuple:
-    return tuple([int(x), int(y), int(z)])
+    return int(x), int(y), int(z)
 
 
 def calc_distance(pos1: tuple, pos2: tuple) -> float:
+    # unpacking
     x1, y1, z1 = pos1
     x2, y2, z2 = pos2
     return math.sqrt((x2 - x1)**2 + (y2 - y1)**2 + (z2 - z1)**2)
@@ -16,15 +17,16 @@ def calc_distance(pos1: tuple, pos2: tuple) -> float:
 
 def parse_coordinate(coord_string: str) -> tuple:
     try:
-        parts = coord_string.split(',')
+        if ',' in coord_string:
+            parts = coord_string.split(',')
+        elif ' ' in coord_string:
+            parts = coord_string.split(' ')
         x, y, z = int(parts[0]), int(parts[1]), int(parts[2])
-        if parts[3]:
-            raise ValueError("more than three numbers detected")
         return tuple([x, y, z])
     except ValueError as e:
         print(f"Error parsing coodinates: {e}")
         print(f"Error - datails - Type: ValueError, Args: ({e})")
-        return None
+        return ()
 
 
 def trace_example() -> None:
@@ -46,6 +48,7 @@ def trace_example() -> None:
     print(f'\nParsing invalid coordinates: "{invalid_str}"')
     parse_coordinate(invalid_str)
 
+    # Unpacking demonstration
     print("\nUnpacking demonstration:")
     x, y, z = pos2
     print(f"Player at x={x}, y={y}, z={z}")
@@ -60,7 +63,8 @@ def valid_three_numbers_case() -> None:
             arg_lst += [tmp]
         except ValueError:
             print("Please enter three numbers: x, y, and z")
-    coord = (arg_lst)
+            return None
+    coord = tuple(arg_lst)
     x, y, z = coord
     create_position(x, y, z)
     print(f"\nPosition created: {coord}")
