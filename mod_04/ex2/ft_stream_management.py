@@ -3,6 +3,7 @@
 import sys
 # from typing import TextIO
 
+
 # def ft_input(prompt: str = "") -> str:
 #    if prompt:
 #        sys.stdout.write(prompt)

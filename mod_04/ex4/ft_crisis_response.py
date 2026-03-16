@@ -6,10 +6,9 @@ class Alert:
         self.alert = f"CRISIS ALERT: Attempting access to '{filename}'...\n"
         self.response = f"RESPONSE: {response}\n"
         self.status = f"STATUS: crisis handled, {status}"
-        self.ret = self.alert + self.response + self.status
 
     def __str__(self) -> str:
-        return self.ret
+        return self.alert + self.response + self.status
 
 
 def crisis_handler(filename: str) -> None:
